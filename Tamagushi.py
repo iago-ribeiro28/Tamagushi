@@ -27,28 +27,20 @@ class BichinhoEletronico:
     def tedio(self):
         return self._tedio
 
+    # Método nome
     def mudar_nome(self):
         novo_nome = input('Coloque o nome desejado: ')
         self._nome = novo_nome
 
+    # Métodos fome
     def alimentar(self):
         if 30 + self._fome <= 0:
             self._fome = 0
         else:
             self._fome -= 30
 
-    def medicar(self, valor):
-        if self._saude + valor <= 100:
-            self._saude += valor
-        elif self._saude + valor > 100:
-            self._saude = 100
-
-    def envelhecer(self, tempo):
-        if tempo // 2 + self._idade >= 100:
-            self._idade = 100
-            return f'Lamento o(a) {self._nome} morreu de velhice'
-        else:
-            self._idade += tempo // 2
+    def aum_fome(self, tempo):
+        self._fome += tempo
 
     def red_fome(self, valor):
         if self._fome - valor >= 0:
@@ -57,16 +49,30 @@ class BichinhoEletronico:
         elif self._fome - valor < 0:
             self._fome = 0
 
-    def aum_fome(self, tempo):
-        self._fome += tempo
+    # Métodos saúde
+    def medicar(self, valor):
+        if self._saude + valor <= 100:
+            self._saude += valor
+        elif self._saude + valor > 100:
+            self._saude = 100
 
     def reduz_saude(self, tempo):
         self._saude -= tempo
 
+    # Método idade
+    def envelhecer(self, tempo):
+        if tempo // 2 + self._idade >= 100:
+            self._idade = 100
+            return f'Lamento o(a) {self._nome} morreu de velhice'
+        else:
+            self._idade += tempo // 2
+
+    # Método humor
     def humor(self):
         humor = (self._fome + self._saude)/2
         return humor
 
+    # Métodos tédio
     def brincar(self, valor):
         if self._tedio - valor >= 0:
             self._tedio -= valor
